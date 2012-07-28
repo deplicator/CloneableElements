@@ -2,6 +2,9 @@ Cloneable Elements
 ------------------
 The script duplicates an element in a form with class="cloneable". The object to to have a single script work for any number of elements, and have a minimum impact on the HTML form. This document explains how to make use of the script, but see the example folder for a more detailed use.
 
+Known Bug: If the cloneable class does not have an id, the buttons don't work as expected (seen in live example under "cars"). I'll get it fixed :)
+
+Live example: http://geekwagon.net/projects/cloneableElements/example
 
 
 ==How To Use==
