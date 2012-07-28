@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Example Application</title>
+        <title>Cloneable Elements Example</title>
         <link rel="stylesheet" href="default.css" />
-        <script src="jquery.js" type="text/javascript"></script>
-        <script src="formcreate.js" type="text/javascript"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+        <script type="text/javascript" src="../cloneableElements.js"></script>
     </head>
     <body>
-        <h1>Example Application</h1>
         <form action="submit.php" method="post">
+            <h1>Cloneable Elements Example</h1>
             <fieldset>
                 <legend>Occupants</legend>
 
-                <fieldset>
+                <fieldset class="infield">
                     <legend>Adults</legend>
 
-                    <div id="adultInfo" class="ocupant cloneable" limit="5">
+                    <div id="adultInfo" class="occupant cloneable" limit="5">
 
                         <div>
                             <label>First Name</label>
@@ -48,7 +48,7 @@
                         </div>
                     </div>
 
-                    <div class="clonesibling">
+                    <div class="buttons">
                         <input type="button" class="btnAdd" value="add another adult" />
                         <input type="button" class="btnDel" value="remove adult" />
                     </div>
@@ -57,10 +57,10 @@
 
 
 
-                <fieldset>
+                <fieldset class="infield">
                     <legend>Children</legend>
 
-                    <div id="childInfo" class="ocupant cloneable" limit="10">
+                    <div id="childInfo" class="occupant cloneable" limit="10">
 
                         <div>
                             <label>First & Last Name</label>
@@ -73,50 +73,47 @@
                         </div>
 
                         <div>
-                            <lable>Sex</lable>
+                            <label>Sex</label>
                             <input type="radio" name="sex" value="male" /> Male<br />
                             <input type="radio" name="sex" value="female" /> Female
                         </div>
 
-                        <select name="car">
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
-                        </select>
                     </div>
 
-                    <div class="clonesibling">
+                    <div class="buttons">
                         <input type="button" class="btnAdd" value="add another child" />
                         <input type="button" class="btnDel" value="remove child" />
                     </div>
                 </fieldset>
 
             </fieldset>
-            
+
             <fieldset>
                 <legend>Cars</legend>
-                
-                <div id="carInfo" class="cloneable" limit="4">
+
+                <div class="carInfo cloneable" limit="4">
                     <div>
-                            <label>Plate Number</label>
-                            <input type="text" name="platenum" />
-                        </div>
-                    
+                        <label>Plate Number</label>
+                        <input type="text" name="platenum" />
+                    </div>
+
+                    <div>
+                        <label>Make</label>
                         <select name="car">
                             <option value="volvo">Ford</option>
                             <option value="saab">Dodge</option>
                             <option value="mercedes">Chevy</option>
                             <option value="audi">Audi</option>
                         </select>
-                </div>
-                    
-
-                    <div class="clonesibling">
-                        <input type="button" class="btnAdd" value="add another child" />
-                        <input type="button" class="btnDel" value="remove child" />
                     </div>
-                
+                </div>
+
+
+                <div class="buttons">
+                    <input type="button" class="btnAdd" value="add another vehicle" />
+                    <input type="button" class="btnDel" value="remove vehicle" />
+                </div>
+
             </fieldset>
 
             <input type="submit" value="Submit" />

@@ -14,7 +14,14 @@ jQuery(function($) {
         var $container = $(this).parent().siblings('.cloneable');
         
         //Assign cloneable sibling's id to variable. This id is used for subsequent cloned elements.
-        var containerId = $container.attr('id');
+        var containerId;
+        if($container.attr('id') === undefined) {
+            containerId = 'cloned';
+        } else {
+            containerId = $container.attr('id');
+
+        }
+        console.log(containerId);
         
         //Made up attribute in HTML to define the max number of particular element.
         var limit = parseInt($container.attr('limit'));
@@ -35,7 +42,7 @@ jQuery(function($) {
             namesArrayInc.push(namesArray[i] + numInc);
         }
 
-        //Clone original sibling, adding the incremented number to the id.
+        //Clone original sibling, increments id if there is one.
         var $newContainer = $container.clone().attr('id', containerId + numInc).removeClass('cloneable');
         
         //Replace all name attributes within cloned element with updated names from array.
