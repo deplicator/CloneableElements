@@ -35,6 +35,8 @@ The button's value does not have to be "add" and "remove", they can be changed t
 
  <div class="cloneable">
  <input type="text" name="box">
+
+ <input type="text" name="box">
  </div>
  <div class="buttons">
  <input type="button" class="btnAdd" value="add" />
