@@ -1,4 +1,6 @@
-==Cloneable Elements==
+Cloneable Elements
+
+==About==
 Makes form elements duplicateable.
 
 The script duplicates an element in a form with class="cloneable". The object to to have a single script work for any number of elements, and have a minimum impact on the HTML form. This document explains how to make use of the script, but see the example folder for a more detailed use.
