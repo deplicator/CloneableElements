@@ -20,12 +20,12 @@ The clonable element can have as many child elements of any type as required. Du
 
 The first difference is "cloneable" will be removed as a class. The duplicated elements will still retain other classes. Using .cloneable for styling could potentially result in the first element being different from the duplicates. In most cases it will be better to use a different class for styling.
 
-The other difference is name attributes found within the cloneable element have a number appended to it's value. This is done so the duplicated input fields can be captured with the form action. In the minimum use example below, name="box" will become name="box2" in the first duplicate, name="box3" in the second, and so on. This is true of all name attributes, so it will work for <select> or any other element name is used.
+The other difference is name attributes found within the cloneable element have a number appended to it's value. This is done so the duplicated input fields can be captured with the form action. In the minimum use example below, name="box" will become name="box2" in the first duplicate, name="box3" in the second, and so on. This is true of all name attributes, so it will work for <nowiki><select></nowiki> or any other element name is used.
 
 ===Button Element===
 For the most part, the class="buttons" in the below example can be copied and pasted next to the class="cloneable" element. There are some options and some restrictions.
 
-The most important restriction is that the element containing the buttons, and the class="clonable" element have to be sibling (within the same container) to work. Forms that need multiple cloneable elements will need to be separated. This can be done by placing them in a <div>, <span> is a good option to make the container unnoticeable  to the user, or <fieldset> is useful in this case.
+The most important restriction is that the element containing the buttons, and the class="clonable" element have to be sibling (within the same container) to work. Forms that need multiple cloneable elements will need to be separated. This can be done by placing them in a <nowiki><div>, <span></nowiki> is a good option to make the container unnoticeable  to the user, or <nowiki><fieldset></nowiki> is useful in this case.
 
 The only other restriction is that the add button must be class="btnAdd", and the remove button must be class="btnDel". They can have other classes. Also, unlike the cloneable class, these will not change and can be used fro styling.
 
