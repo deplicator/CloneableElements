@@ -8,25 +8,25 @@ h1 {
 }
 
 form {
-    background: whitesmoke;
-    box-shadow: 5px 5px 10px dimgrey;
-    margin: 0 auto;
+    background: whiteSmoke;
+    box-shadow: 0px 0px 25px 5px dimgrey;
+    margin: 50px auto;
     padding: 25px;
     width: 600px;
 }
 
 fieldset {
-    box-shadow: 3px 3px 10px dimgrey;
+    border: 3px double dimgrey;
+    border-radius: 9px;
     margin: 0 0 20px 0;
-    padding: 10px;
-    
+    padding: 9px;
 }
 
 legend {
-    background: whitesmoke;
-    border-radius: 3px;
-    box-shadow: 2px 2px 5px dimgrey;
-    padding: 2px 4px;
+    background: whiteSmoke;
+    border: 3px double dimgrey;
+    border-radius: 6px;
+    padding: 2px 6px;
 }
 
 label {
@@ -34,15 +34,11 @@ label {
 }
 
 .infield {
-    box-shadow: none;
-
+    border: 1px solid dimgrey;
 }
 
 .infield legend {
-    border-bottom: 1px solid;
-    border-radius: 0;
-    box-shadow: none;
-    padding: 0 4px;
+    border: 1px solid dimgrey;
 }
 
 .occupant,
@@ -63,4 +59,9 @@ label {
     float: left;
     margin: 5px 0 0 0;
     width: 500px;
+}
+
+#submit {
+    text-align: right;
+    margin: 10px;
 }

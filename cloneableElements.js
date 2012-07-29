@@ -16,12 +16,9 @@ jQuery(function($) {
         //Assign cloneable sibling's id to variable. This id is used for subsequent cloned elements.
         var containerId;
         if($container.attr('id') === undefined) {
-            containerId = 'cloned';
-        } else {
-            containerId = $container.attr('id');
-
+            $container.attr('id', 'cloned');
         }
-        console.log(containerId);
+        containerId = $container.attr('id');
         
         //Made up attribute in HTML to define the max number of particular element.
         var limit = parseInt($container.attr('limit'));

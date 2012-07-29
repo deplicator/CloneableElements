@@ -115,8 +115,9 @@
                 </div>
 
             </fieldset>
-
-            <input type="submit" value="Submit" />
+            <div id="submit">
+                <input type="submit" value="Submit Form" />
+            </div>
         </form>
 
     </body>
