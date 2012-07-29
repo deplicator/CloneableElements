@@ -32,14 +32,21 @@ The element does not require a class or id; class="buttons" is only used in the 
 The button's value does not have to be "add" and "remove", they can be changed to fit the form.
 
 ==Minimum Use Example==
- <nowiki>
+<nowiki>
 <div class="cloneable">
+
 <input type="text" name="box">
+
 </div>
+
 <div class="buttons">
+
 <input type="button" class="btnAdd" value="add" />
+
 <input type="button" class="btnDel" value="remove" />
+
 </div>
+
 </nowiki>
 
 
