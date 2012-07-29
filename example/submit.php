@@ -62,23 +62,21 @@ if (isset($_REQUEST['firstname5'])) {
 
 <h3>Children</h3>
 
-
-
 <?php
 echo '<ol>';
 if (isset($_REQUEST['childname'])) {
     echo '<li>';
     echo $_REQUEST['childname'] .  ' || ';
-    echo $_REQUEST['childbirthdate'] . '<br>';
-    //echo $_REQUEST['sex'] . '<br>';
+    echo $_REQUEST['childbirthdate'] .  ' || ';
+    echo $_REQUEST['sex'] . '<br>';
 }
 
 for ($i = 2; $i < 10; $i++) {
     if (isset($_REQUEST['childname' . $i])) {
         echo '<li>';
         echo $_REQUEST['childname' . $i] .  ' || ';
-        echo $_REQUEST['childbirthdate' . $i] . '<br>';
-        //echo $_REQUEST['sex' . $i] . '<br>';
+        echo $_REQUEST['childbirthdate' . $i] .  ' || ';
+        echo $_REQUEST['sex' . $i] . '<br>'; //Something is wrong here.
     }
 }
 echo '</ol>'
