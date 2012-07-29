@@ -64,18 +64,18 @@
 
                         <div>
                             <label>First & Last Name</label>
-                            <input type="text" name="name" />
+                            <input type="text" name="childname" />
                         </div>
 
                         <div>
-                            <label>Birthday</label>
-                            <input type="text" name="birthday" />
+                            <label>Birth date</label>
+                            <input type="text" name="childbirthdate" />
                         </div>
 
                         <div>
                             <label>Sex</label>
-                            <input type="radio" name="sex" value="male" /> Male<br />
-                            <input type="radio" name="sex" value="female" /> Female
+                            <input type="radio" name="sex" value="male" />Male<br />
+                            <input type="radio" name="sex" value="female" />Female
                         </div>
 
                     </div>
@@ -100,9 +100,9 @@
                     <div>
                         <label>Make</label>
                         <select name="car">
-                            <option value="volvo">Ford</option>
-                            <option value="saab">Dodge</option>
-                            <option value="mercedes">Chevy</option>
+                            <option value="Ford">Ford</option>
+                            <option value="Dodge">Dodge</option>
+                            <option value="Chevy">Chevy</option>
                             <option value="audi">Audi</option>
                         </select>
                     </div>
