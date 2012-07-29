@@ -35,6 +35,9 @@ The button's value does not have to be "add" and "remove", they can be changed t
 
 ==Minimum Use Example==
 <nowiki>
+
+<fieldset>
+
 <div class="cloneable">
 
 <input type="text" name="box">
@@ -48,6 +51,8 @@ The button's value does not have to be "add" and "remove", they can be changed t
 <input type="button" class="btnDel" value="remove" />
 
 </div>
+
+</fieldset>
 
 </nowiki>
 
