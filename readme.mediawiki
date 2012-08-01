@@ -1,4 +1,6 @@
-Cloneable Elements
+=Cloneable Elements=
+
+'''July 31, 2012 - Just did a rewrite and this documentation needs to be redone.'''
 
 ==About==
 
@@ -38,24 +40,29 @@ The button's value does not have to be "add" and "remove", they can be changed t
 
 ==Minimum Use Example==
 
-<nowiki><fieldset></nowiki>
+<nowiki><fieldset class="cloneable"></nowiki>
 
-<nowiki>  <div class="cloneable"></nowiki>
+<nowiki><div></nowiki>
 
-<nowiki>    <input type="text" name="box"></nowiki>
+<nowiki><input type="text" name="box"></nowiki>
 
-<nowiki>  </div></nowiki>
+<nowiki></div></nowiki>
 
-<nowiki>  <div class="buttons"></nowiki>
+<nowiki><input type="button" class="btnAdd" value="add" /></nowiki>
 
-<nowiki>    <input type="button" class="btnAdd" value="add" /></nowiki>
-
-<nowiki>    <input type="button" class="btnDel" value="remove" /></nowiki>
-
-<nowiki>  </div></nowiki>
+<nowiki><input type="button" class="btnDel" value="remove" /></nowiki>
 
 <nowiki></fieldset></nowiki>
 
 ==Tasks==
 * Make unique id's added to cloneable classes when no id is found (currently gives same id for all).
+* Bug: Sibling count currently off because tests were all done within fieldset and legend.
+* Bug: cloneable elements inside cloneable elements have some issues.
+* Thinking about change the over all structure of the cloneable elments to fix above two.
 
+ parent class=cloneable limit=4
+ first element
+ copy of first element
+ copy of first element
+ copy of first element
+ last sibling is buttons

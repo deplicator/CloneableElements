@@ -14,6 +14,18 @@
 
                 <fieldset class="infield">
                     <legend>Adults</legend>
+                    
+                    <span class="cloneable" limit="5">
+                        <div>
+                            <div id="firstname">
+                                <label>First Name</label>
+                                <input type="text" name="firstname" />
+                            </div>
+                        </div>
+                        <input type="button" id="testbtn" class="btnAdd" value="add test" />
+                        <input type="button" class="btnDel" value="remove test" />
+                    </span>
+                    
 
                     <div id="adultInfo" class="occupant cloneable" limit="5">
 
