@@ -2,6 +2,8 @@
 
 '''July 31, 2012 - Just did a rewrite and this documentation needs to be redone.'''
 
+<hr>
+
 ==About==
 
 Makes form elements duplicateable.
