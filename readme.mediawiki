@@ -1,42 +1,30 @@
 =Cloneable Elements=
 
-'''July 31, 2012 - Just did a rewrite and this documentation needs to be redone.'''
-
-<hr>
-
 ==About==
 
 Makes form elements duplicateable.
 
-The script duplicates an element in a form with class="cloneable". The object to to have a single script work for any number of elements, and have a minimum impact on the HTML form. This document explains how to make use of the script, but see the example folder for a more detailed use.
+The script duplicates an element in a form. The object to to have a single script work for any number of elements, and have a minimum impact on the HTML form. This document explains how to make use of the script, but see the example folder for a more detailed use.
 
-* github: https://github.com/deplicator/CloneableElements
 * Live example: http://geekwagon.net/projects/cloneableElements/example
+* github: https://github.com/deplicator/CloneableElements
+
+Version: twoish
 
 ==How To Use==
 ===Cloneable Element===
 
-There will need to be a DOM element in your HTML form with the class="cloneable". If it isn't obvious, this is the element that gets duplicated. This element can have other classes. It doesn't have to be a div (but div is recommended).
+There will need to be a DOM element in your HTML form with the class="cloneable". This first child is the element that gets duplicated. The cloneable class and it's first child can have other classes and ids.
 
-It is also recommended, but not required, this element be given an id. The script will add and increment a number after the id of duplicated elements. Cloneable elements without an id will be given an id of 'cloned'. This id will also be given a number and incremented, but if there are multiple cloneable elements on a page these id's will mean little (and presumably this won't matter if id's wen't used in the first place).
+The cloneable class element element can have a limit attribute that accepts a number (example limit="5"). Without this attribute the first child can be duplicated an unlimited number of times. Having a limit is highly recommended.
 
-This element can also have a limit attribute that accepts a number (example limit="5"). Without this attribute the element can be duplicated an unlimited number of times. Having a limit is highly recommended.
+The clonable class element's first child can have as many child elements of any type as required. Duplicated elements will be the same as class and an incremented id. All name attributes found within the cloneable element's first child will have a number appended to them. This is done so the duplicated input fields can be captured with the form action. In the minimum use example below, name="box" will become name="box2" in the first duplicate, name="box3" in the second, and so on. This is true of all name attributes, so it will work for <nowiki><select></nowiki> or any element name is used.
 
-The clonable element can have as many child elements of any type as required. Duplicated elements will be the same as the class="cloneable" template except for the noted differences.
+===Buttons===
 
-The first difference is "cloneable" will be removed as a class. The duplicated elements will still retain other classes. Using .cloneable for styling could potentially result in the first element being different from the duplicates. In most cases it will be better to use a different class for styling.
+For the most part, the two buttons in the below example can be copied and pasted as the last two elements in the cloneable class.
 
-The other difference is name attributes found within the cloneable element have a number appended to it's value. This is done so the duplicated input fields can be captured with the form action. In the minimum use example below, name="box" will become name="box2" in the first duplicate, name="box3" in the second, and so on. This is true of all name attributes, so it will work for <nowiki><select></nowiki> or any other element name is used.
-
-===Button Element===
-
-For the most part, the class="buttons" in the below example can be copied and pasted next to the class="cloneable" element. There are some options and some restrictions.
-
-The most important restriction is that the element containing the buttons, and the class="clonable" element have to be sibling (within the same container) to work. Forms that need multiple cloneable elements will need to be separated. This can be done by placing them in a <nowiki><div>, <span></nowiki> is a good option to make the container unnoticeable  to the user, or <nowiki><fieldset></nowiki> is useful in this case.
-
-The only other restriction is that the add button must be class="btnAdd", and the remove button must be class="btnDel". They can have other classes. Also, unlike the cloneable class, these will not change and can be used fro styling.
-
-The element does not require a class or id; class="buttons" is only used in the minimum used example for easier reference.
+The only other restriction is that the add button must be class="btnAdd", and the remove button must be class="btnDel". They can have other classes.
 
 The button's value does not have to be "add" and "remove", they can be changed to fit the form.
 
@@ -58,13 +46,4 @@ The button's value does not have to be "add" and "remove", they can be changed t
 
 ==Tasks==
 * Make unique id's added to cloneable classes when no id is found (currently gives same id for all).
-* Bug: Sibling count currently off because tests were all done within fieldset and legend.
-* Bug: cloneable elements inside cloneable elements have some issues.
-* Thinking about change the over all structure of the cloneable elments to fix above two.
-
- parent class=cloneable limit=4
- first element
- copy of first element
- copy of first element
- copy of first element
- last sibling is buttons
+* Cloneable inside cloneable doesn't work, probably has something to do with id's or class of the first element.

@@ -65,12 +65,12 @@ jQuery(function($) {
         }
 
         //That's a little asinine, but it works.
-        $('.btnDel').parent().find('.btnDel').attr('disabled', false);
+        $(this).parent().find('.btnDel').attr('disabled', false);
 
         //Disbale add button when limit reached.
         if(numInc === limit) {
             //Transverse that DOM! Ride it like a lollercoster.
-            $('.btnAdd').parent().find('.btnAdd').attr('disabled', 'disabled');
+            $(this).parent().find('.btnAdd').attr('disabled', 'disabled');
         }
 
     })
@@ -87,7 +87,7 @@ jQuery(function($) {
         containerId = $container.attr('id');
 
         //Count all elements with same class.
-        numOfElements = $('.btnDel').siblings('.' + containerClass).length;
+        numOfElements = $(this).siblings('.' + containerClass).length;
 
         //Mash it all together to find element to remove.
         var containerToRemove = containerId + numOfElements;
@@ -96,11 +96,11 @@ jQuery(function($) {
         $('#' + containerToRemove).remove();
 
         //Enable add button, always!
-        $('.btnAdd').parent().find('.btnAdd').attr( 'disabled', false );
+        $(this).parent().find('.btnAdd').attr( 'disabled', false );
 
         //If no removable elements remain, disable remove button.
         if(numOfElements === 2) {
-            $('.btnDel').parent().find('.btnDel').attr( 'disabled', 'disabled' );
+            $(this).parent().find('.btnDel').attr( 'disabled', 'disabled' );
         }
 
     });
