@@ -37,13 +37,9 @@
                                 <input type="text" name="birthdate" />
                             </div>
     
-                            <div class="cloneable">
-                                <div id="wut" class="mowut">
-                                    <label>Phone</label>
-                                    <input type="text" name="phone" />
-                                </div>
-                                <input type="button" class="btnAdd" value="add phone" />
-                                <input type="button" class="btnDel" value="remove phone" />
+                            <div>
+                                <label>Phone</label>
+                                <input type="text" name="phone" />
                             </div>
     
                             <div>
@@ -52,8 +48,6 @@
                             </div>
                         </div>
 
-                        <input type="button" class="btnAdd" value="add adult" />
-                        <input type="button" class="btnDel" value="remove adult" />
                     </span>
                 </fieldset>
 

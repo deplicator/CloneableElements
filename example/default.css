@@ -43,13 +43,14 @@ label {
 }
 
 .infield {
-    border: 1px solid dimgrey;
+    border: none;
     box-shadow: none;
 }
 
 .infield legend {
-    border: 1px solid dimgrey;
+    border: none;
     box-shadow: none;
+    background: transparent;
 }
 
 .occupant,
@@ -63,8 +64,16 @@ label {
 .occupant div,
 .carInfo div {
     float: left;
+    
 
 }
+
+.occupant div label,
+.occupant div input {
+    padding: 0;
+    margin: 0;
+}
+
 
 .btnAdd,
 .btnDel {

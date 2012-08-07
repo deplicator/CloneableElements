@@ -9,7 +9,7 @@ The script duplicates an element in a form. The object to to have a single scrip
 * Live example: http://geekwagon.net/projects/cloneableElements/example
 * github: https://github.com/deplicator/CloneableElements
 
-Version: twoish
+Version: threeish
 
 ==How To Use==
 ===Cloneable Element===
@@ -22,11 +22,11 @@ The clonable class element's first child can have as many child elements of any 
 
 ===Buttons===
 
-For the most part, the two buttons in the below example can be copied and pasted as the last two elements in the cloneable class.
+The script inserts add and remove buttons behind the first element. If you want to use your own values other than add and remove, you can insert the buttons in your html manually.
+<nowiki><input type="button" class="btnAdd" value="insert field" /></nowiki>
+<nowiki><input type="button" class="btnDel" value="delete field" /></nowiki>
 
-The only other restriction is that the add button must be class="btnAdd", and the remove button must be class="btnDel". They can have other classes.
-
-The button's value does not have to be "add" and "remove", they can be changed to fit the form.
+The script relies on the button's classes to remain the same.
 
 ==Minimum Use Example==
 
@@ -37,10 +37,6 @@ The button's value does not have to be "add" and "remove", they can be changed t
 <nowiki><input type="text" name="box"></nowiki>
 
 <nowiki></div></nowiki>
-
-<nowiki><input type="button" class="btnAdd" value="add" /></nowiki>
-
-<nowiki><input type="button" class="btnDel" value="remove" /></nowiki>
 
 <nowiki></fieldset></nowiki>
 

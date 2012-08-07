@@ -4,6 +4,30 @@
  * and increment numbers to name attributes inside the cloned element.
  * See accompanying README and example for more details.
  */
+
+
+
+//Insert add and remove buttons if they don't exist.
+$(document).ready(function() {
+    $('.cloneable').each(function() {
+        if($(this).children('.btnAdd').length == 0) {
+         $(this).append('<input type="button" class="btnAdd" value="add" />');
+        }
+        if($(this).children('.btnDel').length == 0) {
+         $(this).append('<input type="button" class="btnDel" value="remove" />');
+        }
+    });
+});
+
+/*   
+    if($('.cloneable').children('.btnAdd').length === 0) {
+        $(this).append('<input type="button" class="btnAdd" value="add" />');
+    }
+    if($('.cloneable').children('.btnDel').length === 0) {
+        $(this).append('<input type="button" class="btnDel" value="remove" />');
+    }
+});*/
+ 
 jQuery(function($) {
 
     //Remove button starts disabled.
