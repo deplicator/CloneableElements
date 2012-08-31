@@ -15,8 +15,7 @@
                 <fieldset class="infield">
                     <legend>Adults</legend>
     
-                    <span class="cloneable" limit="5">
-                        <div id="adult" class="occupant">
+                        <div class="cloneable occupant" limit="5" id="adult">
                             <div>
                                 <label>First Name</label>
                                 <input type="text" name="firstname" />
@@ -48,14 +47,12 @@
                             </div>
                         </div>
 
-                    </span>
                 </fieldset>
 
                 <fieldset class="infield">
                     <legend>Children</legend>
                     
-                    <span class="cloneable" limit="10">
-                        <div id="childInfo" class="occupant">
+                        <div id="childInfo" class="cloneable occupant" limit="10">
                             <div>
                                 <label>First & Last Name</label>
                                 <input type="text" name="childname" />
@@ -73,9 +70,8 @@
                             </div>
                         </div>
     
-                        <input type="button" class="btnAdd" value="add child" />
-                        <input type="button" class="btnDel" value="remove child" />
-                    </span>
+                        <input type="button" class="addButton" value="add child" />
+                        <input type="button" class="remButton" value="remove child" />
                     
                 </fieldset>
 
@@ -84,8 +80,7 @@
             <fieldset>
                 <legend>Cars</legend>
                 
-                <span class="cloneable" limit="4">
-                    <div class="carInfo">
+                    <div class="cloneable carInfo" limit="4">
                         <div>
                             <label>Plate Number</label>
                             <input type="text" name="platenum" />
@@ -100,11 +95,10 @@
                                 <option value="audi">Audi</option>
                             </select>
                         </div>
-                    </div>
 
-                    <input type="button" class="btnAdd" value="add vehicle" />
-                    <input type="button" class="btnDel" value="remove vehicle" />
-                </span>
+                    <input type="button" class="addButton" value="add vehicle" />
+                    <input type="button" class="remButton" value="remove vehicle" />
+                    </div>
 
             </fieldset>
             

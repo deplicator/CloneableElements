@@ -1,132 +1,165 @@
 /* 
  * Requires jQuery. This function is designed to make dynamic forms easier. It
- * clones the first child element with the '.cloneable' element. Will also add
- * and increment numbers to name attributes inside the cloned element.
- * See accompanying README and example for more details.
+ * clones everything inside a class="cloneable" element. See readme for more details.
  */
 
-
-
-//Insert add and remove buttons if they don't exist.
 $(document).ready(function() {
+
+	//Two dimensional array, ["cloneelement id", count, {jQuery Object}].
+    var cloneOriginals = [];
+	
+	//Used to track number of cloneable elements given an id.
+    var noid = 0;
+	
+	//Insert add and remove buttons if they do not exist.
     $('.cloneable').each(function() {
-        if($(this).children('.btnAdd').length == 0) {
-         $(this).append('<input type="button" class="btnAdd" value="add" />');
-        }
-        if($(this).children('.btnDel').length == 0) {
-         $(this).append('<input type="button" class="btnDel" value="remove" />');
-        }
-    });
-});
-
-/*   
-    if($('.cloneable').children('.btnAdd').length === 0) {
-        $(this).append('<input type="button" class="btnAdd" value="add" />');
-    }
-    if($('.cloneable').children('.btnDel').length === 0) {
-        $(this).append('<input type="button" class="btnDel" value="remove" />');
-    }
-});*/
- 
-jQuery(function($) {
-
-    //Remove button starts disabled.
-    $('.btnDel').attr( 'disabled', 'disabled' );
-
-    //Button to add cloned element.
-    $('.btnAdd').click(function() {
-        //Assign first child in .cloneable to variable.
-        var $container = $(this).parent().children(':first');
-
-        //Give and assign first element class to variable.
-        var containerClass;
-        if($container.attr('class') === undefined) {
-            $container.attr('class', 'clone');
-        }
-        containerClass = $container.attr('class');
-
-        //Give and assign first element id to variable.
-        var containerId;
-        if($container.attr('id') === undefined) {
-            $container.attr('id', 'clone');
-        }
-        containerId = $container.attr('id');
-
-        //User assigned attribute in HTML to define the max number of times element can be cloned.
-        var limit = parseInt($container.parent().attr('limit'));
-
-        //Counts all the siblings, adds one for new sibling.
-        var num = $(this).siblings('.'+ containerClass).length;
-        var numInc = num + 1;
-
-        //Create array of element names attributes within first element.
-        var namesArray = $.map($container.find('*'), function(val, i) {
-            return $(val).attr('name');
-        });
-
-        //Add or increment numbers behind all name attributes in cloned element.
-        var namesArrayInc = [];
-        var namesArrayLen = namesArray.length;
-        for(var i = 0; i < namesArrayLen; i++) {
-            namesArrayInc.push(namesArray[i] + numInc);
+        if($(this).children('.addButton').length === 0) {
+         $(this).append('<input type="button" class="addButton" value="add" />');
         }
 
-        //Clone original sibling, increments id if there is one.
-        var $newContainer = $container.clone().attr('id', containerId + numInc);
-
-        //Replace all name attributes within cloned element with updated names from array.
-        for(var j = 0; j < namesArrayLen; j++) {
-            $newContainer.find('[name]').eq(j).each(function () {
-                $(this).attr('name', namesArrayInc[j]).attr('value', '');
-            })
+        if($(this).children('.remButton').length === 0) {
+         $(this).append('<input type="button" class="remButton" value="remove" />');
         }
-
-        //Insert cloned element.
-        if(num === 1) {
-            $container.after($newContainer);
-        } else {
-            $('#' + containerId + num).after($newContainer);
-        }
-
-        //That's a little asinine, but it works.
-        $(this).parent().find('.btnDel').attr('disabled', false);
-
-        //Disbale add button when limit reached.
-        if(numInc === limit) {
-            //Transverse that DOM! Ride it like a lollercoster.
-            $(this).parent().find('.btnAdd').attr('disabled', 'disabled');
-        }
-
-    })
-
-    //Button to remove cloned element.
-    $('.btnDel').click( function() {
-        //Get number of containers.
-        var $container = $(this).parent().children(':first');
-
-        //Assign first element's class to variable.
-        containerClass = $container.attr('class');
-
-        //Assign first element's id to variable.
-        containerId = $container.attr('id');
-
-        //Count all elements with same class.
-        numOfElements = $(this).siblings('.' + containerClass).length;
-
-        //Mash it all together to find element to remove.
-        var containerToRemove = containerId + numOfElements;
-
-        //Remove it!
-        $('#' + containerToRemove).remove();
-
-        //Enable add button, always!
-        $(this).parent().find('.btnAdd').attr( 'disabled', false );
-
-        //If no removable elements remain, disable remove button.
-        if(numOfElements === 2) {
-            $(this).parent().find('.btnDel').attr( 'disabled', 'disabled' );
-        }
-
+		
     });
 
+	//All remove buttons start disabled.
+    $('.remButton').attr( 'disabled', 'disabled' );
+
+    //Run when add button clicked.
+	$('.addButton').click(function() {
+	
+		//Create id for cloneable element if ones does not exists.
+        if($(this).parent().attr('id') === undefined) {
+            var noidInc = noid + 1;
+            $(this).parent().attr('id', 'undefinedId' + noidInc);
+            noid = noidInc;
+        }
+		
+		//If there is no user assigned limit, the limit is 100.
+        var limit = parseInt($(this).parent().attr('limit'));
+        if(isNaN(limit)) {
+            limit = 100;
+        }
+
+		//The id of the cloneable element is used to identify it in the array of original objects.
+		var cloneId = $(this).parent().attr('id');
+		
+		//Creats an object of cloneable element's id, number of times it's been used, and the jQuery object.
+		var temp = {
+			id: cloneId,
+			count: 1,
+			elem: $(this).parent().clone()
+		}
+		
+		//Uses array prototypes (found below) to insert temp object if it is not already there.
+		cloneOriginals.pushIfNotExist(temp, function(e) { 
+			return e.id === temp.id;
+		});
+		
+		//Finds the object by cloneable element id.
+		for(var i =0; i < cloneOriginals.length; i++) {
+			if(cloneOriginals[i].id === cloneId) {
+				$fromArray = cloneOriginals[i].elem.clone();
+				currentCount = cloneOriginals[i].count;
+				newCount = currentCount + 1;
+				cloneOriginals[i].count = newCount;
+			}
+		}
+
+		//Increment or add number behind name attributes.
+		var namesArray = [];
+		$fromArray.find('[name]').each(function () {
+			namesArray.push($(this).attr('name'));
+		});
+		
+		var nameArrayLen = namesArray.length;
+		for(var j = 0; j < nameArrayLen; j++) {
+			$fromArray.find('[name]').eq(j).each(function () {
+				$(this).attr('name', namesArray[j] + newCount).attr('value', '');
+			});
+		}
+		
+		//Increment or add number behind ids found inside cloneable element.
+		var idsArray = [];
+		$fromArray.find('[id]').each(function () {
+			idsArray.push($(this).find('.cloneable:not(:contains(*))').attr('id'));
+		});
+		
+		var idsArrayLen = idsArray.length;
+		for(var j = 0; j < idsArrayLen; j++) {
+			$fromArray.find('[id]').eq(j).each(function () {
+				$(this).attr('id', idsArray[j] + newCount);
+			});
+		}
+
+		//Insert just children of the original, except buttons.
+		$justChilds = $fromArray.children(':not(.addButton, .remButton)');
+		$justChilds.insertBefore($(this));
+		
+		$(this).parent().find('.remButton').attr( 'disabled', false );
+		
+		if(newCount === limit) {
+			$(this).attr( 'disabled', 'disabled' );
+		}
+
+	});
+	
+	//Run when add button clicked.
+	$('.remButton').click( function() {
+	
+		var cloneId = $(this).parent().attr('id');
+	
+        //Get count
+        for(var i =0; i < cloneOriginals.length; i++) {
+			if(cloneOriginals[i].id === cloneId) {
+				$fromArray = cloneOriginals[i].elem.clone();
+				currentCount = cloneOriginals[i].count;
+				newCount = currentCount - 1;
+				cloneOriginals[i].count = newCount;
+			}
+		}
+		
+		$justChilds = $fromArray.children(':not(.addButton, .remButton)')
+		toRemoveSize = $justChilds.size();
+		entireSize = $('#' + cloneId).children(':not(.addButton, .remButton)').size();
+		//console.log(entireSize);
+		//console.log(toRemoveSize);
+		for(var j = toRemoveSize; j > 0; j--) {
+			temp = toRemoveSize * (currentCount - 1);
+			$('#' + cloneId).children(':not(.addButton, .remButton)').eq(temp).remove();
+			console.log(temp);
+		}
+		
+		//Enabled add button.
+		$(this).parent().find('.addButton').attr( 'disabled', false );
+		
+		//If no removable elements remain, disable remove button.
+        if(currentCount === 2) {
+            $(this).parent().find('.remButton').attr( 'disabled', 'disabled' );
+        }
+
+    });
+
 });
+
+/*
+ * Array.prototypes from Darin Dimitrov's answer at stackoverflow
+ * http://stackoverflow.com/questions/1988349/array-push-if-does-not-exist
+ */
+// check if an element exists in array using a comparer function
+// comparer : function(currentElement)
+Array.prototype.inArray = function(comparer) { 
+    for(var i=0; i < this.length; i++) { 
+        if(comparer(this[i])) return true; 
+    }
+    return false; 
+}; 
+
+// adds an element to the array if it does not already exist using a comparer 
+// function
+Array.prototype.pushIfNotExist = function(element, comparer) { 
+    if (!this.inArray(comparer)) {
+        this.push(element);
+    }
+};

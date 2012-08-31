@@ -7,40 +7,32 @@ Makes form elements duplicateable.
 
 The script duplicates an element in a form. The object to to have a single script work for any number of elements, and have a minimum impact on the HTML form. This document explains how to make use of the script, but see the example folder for a more detailed use.
 
+Known bug: putting a cloneable element inside a cloneable element doens't work yet.
+
 * Live example: http://geekwagon.net/projects/cloneableElements/example
 * github: https://github.com/deplicator/CloneableElements
 
-Version: threeish
+Version: fourish
 
 ==How To Use==
 ===Cloneable Element===
 
-There will need to be a DOM element in your HTML form with the class="cloneable". This first child is the element that gets duplicated. The cloneable class and it's first child can have other classes and ids.
+Whatever group of elements you want to duplicate will need to be put inside an element with the class="cloneable". There can be any number of decendats.
 
-The cloneable class element element can have a limit attribute that accepts a number (example limit="5"). Without this attribute the first child can be duplicated an unlimited number of times. Having a limit is highly recommended.
+The cloneable class element element can have a limit attribute that accepts a number (example limit="5"). This is how many times the element can be duplicated. Without this attribute the limit is 100 (and that can even be changed inthe script).
 
-The clonable class element's first child can have as many child elements of any type as required. Duplicated elements will be the same as class and an incremented id. All name attributes found within the cloneable element's first child will have a number appended to them. This is done so the duplicated input fields can be captured with the form action. In the minimum use example below, name="box" will become name="box2" in the first duplicate, name="box3" in the second, and so on. This is true of all name attributes, so it will work for <nowiki><select></nowiki> or any element name is used.
+Duplicated elements will be the same as class and an incremented id. All id's name attributes found within the cloneable element will have a number appended to them. This is done so the duplicated input fields can be captured with the form action. For example, the name="box" will become name="box2" in the first duplicate, name="box3" in the second, and so on. This is true of all name attributes, so it will work for <nowiki><select></nowiki> or any element name is used.
 
 ===Buttons===
 
-The script inserts add and remove buttons behind the first element. If you want to use your own values other than add and remove, you can insert the buttons in your html manually.
-<nowiki><input type="button" class="btnAdd" value="insert field" /></nowiki>
-<nowiki><input type="button" class="btnDel" value="delete field" /></nowiki>
+The script inserts add and remove buttons automatically if they're not found. If you want to use your own values other than add and remove, you can insert the buttons in your html manually. The buttons should be the last two children inside the cloneaeble class.
+
+<nowiki><input type="button" class="addButton" value="insert field" /></nowiki>
+<nowiki><input type="button" class="remButton" value="delete field" /></nowiki>
 
 The script relies on the button's classes to remain the same.
 
-==Minimum Use Example==
 
-<nowiki><fieldset class="cloneable"></nowiki>
-
-<nowiki><div></nowiki>
-
-<nowiki><input type="text" name="box"></nowiki>
-
-<nowiki></div></nowiki>
-
-<nowiki></fieldset></nowiki>
 
 ==Tasks==
-* Make unique id's added to cloneable classes when no id is found (currently gives same id for all).
-* Cloneable inside cloneable doesn't work, probably has something to do with id's or class of the first element.
+* Cloneable inside cloneable doesn't work, that could be neat.

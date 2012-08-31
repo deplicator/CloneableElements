@@ -75,8 +75,8 @@ label {
 }
 
 
-.btnAdd,
-.btnDel {
+.addButton,
+.remButton {
     margin: 5px 0 0 0;
     display: block;
     clear: both;
