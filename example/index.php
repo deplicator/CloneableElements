@@ -68,10 +68,11 @@
                                 <input type="radio" name="sex" value="male" />Male<br />
                                 <input type="radio" name="sex" value="female" />Female
                             </div>
+                            <input type="button" class="addButton" value="add child" />
+                            <input type="button" class="remButton" value="remove child" />
                         </div>
     
-                        <input type="button" class="addButton" value="add child" />
-                        <input type="button" class="remButton" value="remove child" />
+                        
                     
                 </fieldset>
 
